@@ -1,0 +1,7 @@
+Bender   1 paint
+Calculon 4 metalwork memwipe metalwork paint
+r2d2     2 oilbath paint
+c3p0     3 memwipe oilbath paint
+Hedonismbot 5 oilbath oilbath oilbath paint oilbath
+TinyTin  2 metalwork metalwork
+$

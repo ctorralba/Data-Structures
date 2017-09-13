@@ -1,0 +1,106 @@
+//Christopher Torralba		Section: B
+
+#include "queue.h"
+#include <iostream>
+using namespace std;
+
+class Robot
+{
+  private:
+    string m_name;
+    int m_numOfServices;
+    ArrayQueue<int> m_services;
+  public:
+    Robot(){m_name=""; m_numOfServices = 0;};
+    Robot(const string name, const int numServices,
+    const ArrayQueue<int> Services)
+    {
+      m_name = name;
+      m_numOfServices = numServices;
+      m_services = Services;
+    };
+    bool isFinished() const {return m_services.isEmpty();}
+    string getName() const {return m_name;}
+    int getNumServices() const {return m_numOfServices;}
+    void clear(){m_services.clear();}
+    void dequeueService(){m_services.dequeue();}
+};
+
+class ServiceStation
+{
+  private:
+    int m_time;
+    bool m_open;
+    Robot m_robot;
+  public: 
+    ServiceStation(){};
+    ServiceStation(const int & time)
+    {
+      m_time = time;
+    };
+    int getTime() const {return m_time;}
+    void setRobot(const Robot x){m_robot=x;}
+    Robot getRobot() const {return m_robot;}
+    bool getIsOpen() const {return m_open;}
+    void setIsOpen(const int x) {m_open = x;}
+    void setTime(const int x) {m_time = x;}
+};
+
+int main()
+{
+  const int MEMWIPE_TIME = 9;
+  const int PAINT_TIME = 18;
+  const int METALWORK_TIME = 12;
+  const int OILBATH_TIME = 4;
+  ServiceStation m;
+  Robot r;
+  string name;
+  ArrayQueue<int> services;
+  ArrayQueue<Robot> robots;
+  string robotRequest;
+  int requestNum;
+  int serviceNum;
+  ServiceStation paint(PAINT_TIME), metalwork(METALWORK_TIME),
+   oilbath(OILBATH_TIME), memwipe(MEMWIPE_TIME);
+  
+  do
+  {
+    cin>>name;
+    if(name != "$")
+    {
+      cin>>serviceNum;
+      for (int k = 0; k < serviceNum; k++)
+      {
+        cin >> robotRequest;
+        if(robotRequest == "paint")
+        {
+          requestNum = 1;
+        }
+        if(robotRequest == "metalwork")
+        {
+          requestNum = 2;
+        }
+        if(robotRequest == "oilbath")
+        {
+         requestNum = 3;
+        }
+        if(robotRequest == "memwipe")
+        {
+          requestNum = 4;
+        }
+        services.enqueue(requestNum);
+      }
+      Robot myRobot(name, robotRequest, services);
+      robots.enqueue(myRobot);
+      services.clear();
+    }
+  }while (name != "$");
+  
+  while(!robots.size()==0 || !paint.getIsOpen() || !oilbath.getIsOpen() ||
+        !memwipe.getIsOpen() || !metalwork.getIsOpen())
+  {
+  }
+    
+                                 
+  return 0;
+}

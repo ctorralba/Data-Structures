@@ -1,0 +1,37 @@
+/* Christopher Torralba		File: robots.cpp
+  Date: 3/3/16						Section: B
+ */
+ 
+ #include <iostream>
+ #include <iomanip>
+ #include "WelderRobot.h"
+ #include "BenderRobot.h"
+ #include "WrapperRobot.h"
+ #include "AbstractRobot.h"
+ 
+ using namespace std;
+ 
+ int main()
+ {
+ 	 float totalPay = 0;
+ 	 
+ 	 WrapperRobot x("Unit-01", 10, 20);
+   BenderRobot y("Flexo", 14, 28, 30);
+   WelderRobot z("Fuzion", 18, 20, 5);
+   WrapperRobot some("Scott", 5, 5);
+   
+   cout.setf(ios_base::fixed,ios_base::floatfield);
+   cout.precision(2);
+
+   cout << "#0: " << x.getName() << ", " << x. getType() << " $" << x.getPay() << endl;
+   totalPay = x.getPay() + totalPay;
+   cout << "#1: " << y.getName() << ", " << y. getType() << " $" << y.getPay() << endl;
+   totalPay = y.getPay() + totalPay;
+   cout << "#2: " << z.getName() << ", " << z. getType() << " $" << z.getPay() << endl;
+   totalPay = z.getPay() + totalPay;
+   cout << "#3: " << some.getName() << ", " << some. getType() << " $" << some.getPay() << endl;
+   totalPay = some.getPay() + totalPay;
+  
+	 cout << "TOTAL PAY = $" << totalPay << endl;
+	 cout << "AVERAGE PAY = $" << (totalPay/4) << endl;
+ }
